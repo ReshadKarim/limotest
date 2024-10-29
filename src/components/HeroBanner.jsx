@@ -1,6 +1,7 @@
 import React from "react";
 import background from "/HS2.png";
 import logo from "/LLL.png";
+import logos from "/LLLs.png";
 
 function HeroBanner() {
   return (
@@ -12,8 +13,18 @@ function HeroBanner() {
         backgroundPosition: "center",
       }}
     >
+      {/* Mobile background logo */}
+      <div
+        className='absolute inset-0 bg-center bg-no-repeat opacity-20 sm:hidden'
+        style={{
+          backgroundImage: `url(${logos})`,
+          backgroundSize: "50%", // Adjust this value to make the logo smaller
+          backgroundPosition: "center",
+        }}
+      ></div>
+
       {/* Container for responsive design */}
-      <div className='container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-4 sm:px-6 lg:px-8'>
+      <div className='container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Left Section (Text and Buttons) */}
         <div className='text-white max-w-xl space-y-6 text-center md:text-left mt-8 md:mt-0'>
           <p className='text-lg sm:text-xl font-bold'>Software That Will</p>
@@ -34,8 +45,8 @@ function HeroBanner() {
           </div>
         </div>
 
-        {/* Right Section (Logo) */}
-        <div className='md:ml-8'>
+        {/* Right Section (Logo for larger screens) */}
+        <div className='hidden sm:flex md:ml-8'>
           <img
             src={logo}
             alt='Logo'
